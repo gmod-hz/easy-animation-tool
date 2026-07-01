@@ -45,6 +45,6 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Commit and push
         run: |
-          cp -r ${{ runner.temp }} ./
+          cp -r ${{ runner.temp }}/* ./
           git commit -am "Updated from Workshop"
           git push origin main
