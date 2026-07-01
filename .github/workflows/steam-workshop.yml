@@ -36,7 +36,7 @@ jobs:
       - name: Extract GMA
         run: |
           pwd; ls
-          fastgmad extract -file ${{ steps.download.outputs.GMA }}
+          fastgmad extract -file ${{ steps.download.outputs.GMA }} -out ${{ runner.temp }}
       - name: Checkout repository
         uses: actions/checkout@v7.0.0
       - name: Configure Git
@@ -45,6 +45,6 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Commit and push
         run: |
-          pwd; ls
+          cp -r ${{ runner.temp }} ./
           git commit -am "Updated from Workshop"
           git push origin main
